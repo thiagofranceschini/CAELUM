@@ -11,7 +11,7 @@
 </head>
 <body>
 	
-<form:form action="/casadocodigo/produtos" method="post" commandName="product">
+<form:form action="/casadocodigo/produtos" method="post" commandName="product" enctype="multipart/form-data" >
 	<h2>Informações para cadastro de produtos</h2>
 	<div>
 		<label for="titulo">Titulo</label>
@@ -28,6 +28,17 @@
 		<textarea rows="10" cols="20" name="descricao" id="descricao"></textarea>
 		<form:errors path="descricao"/>
 	</div>
+	<div>
+		<label>Data de Lançamento</label>
+		<form:input path="lancamento" type="text" id="lancamento"/>
+		<form:errors path="lancamento"/>
+	</div>
+	<div>
+		<label for="summary">Sumario</label>
+		<input type="file" name="summary" id="summary"/>
+		
+	</div>
+	
 	<div>
 		<c:forEach items="${types}" var="bookType" varStatus="status">
 			<div>

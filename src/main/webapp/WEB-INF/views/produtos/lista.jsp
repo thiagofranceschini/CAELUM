@@ -22,6 +22,10 @@
 					${prices.bookType }-${prices.value}
 				</c:forEach>
 			</td>
+			<td>
+				<c:url value="/produtos/${produto.id}" var="linkDetalhar"/>
+				<a href="${linkDetalhar }">Detalhar</a>
+			</td>
 		</tr>
 	</c:forEach>
 	

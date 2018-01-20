@@ -1,5 +1,8 @@
 package br.com.caelum.cdc.config;
 
+import javax.servlet.MultipartConfigElement;
+import javax.servlet.ServletRegistration.Dynamic;
+
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class ServletSpringMvc extends AbstractAnnotationConfigDispatcherServletInitializer {
@@ -12,12 +15,18 @@ public class ServletSpringMvc extends AbstractAnnotationConfigDispatcherServletI
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
 		//sempre adiciona as classes de coniguração para sinalizar ao spring
-		return new Class[]{AppWebConfiguration.class, JPAConfig.class};
+		return new Class[]{AppWebConfiguration.class, JPAConfig.class,};
 	}
 
 	@Override
 	protected String[] getServletMappings() {
 		return new String[] {"/"};
 	}
+	
+	@Override
+	protected void customizeRegistration(Dynamic registration) {
+		registration.setMultipartConfig(new MultipartConfigElement(""));
+	}
+	
 
 }
