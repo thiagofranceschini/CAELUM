@@ -20,7 +20,7 @@ import br.com.caelum.cdc.models.ShoppingCart;
 import br.com.caelum.cdc.models.ShoppingItem;
 
 @Controller
-@RequestMapping("/Shopping")
+@RequestMapping("/shopping")
 public class ShoppingCartController {
 	
 	
@@ -43,6 +43,7 @@ public class ShoppingCartController {
 		try {
 			String response = restTemplate.postForObject(uriToPay, new PaymentData(total), String.class);
 			System.out.println(response);
+			shoppingCart.getList().clear();
 			return "redirect:/produtos";
 		} catch (HttpClientErrorException exception) {
 			System.out.println("Ocorreu um erro ao criar o pagamento"+exception.getMessage());
@@ -52,7 +53,9 @@ public class ShoppingCartController {
 	}	
 	@RequestMapping(method=RequestMethod.POST)
 	public ModelAndView add(Integer productId, @RequestParam BookType bookType){
+		System.out.println("Adiconado ao carrinho redirecionando para /produtos...");
 		ShoppingItem item = createItem(productId, bookType);
+		System.out.println("##item booktype"+bookType);
 		shoppingCart.add(item);
 		return new ModelAndView("redirect:/produtos");
 	}
@@ -61,5 +64,10 @@ public class ShoppingCartController {
 		Product product = productDao.find(productId);
 		ShoppingItem item = new ShoppingItem(product, bookType);
 		return item;
+	}
+	
+	@RequestMapping(method= RequestMethod.GET)
+	public String list(){
+		return "/shoppingcart/item";
 	}
 }

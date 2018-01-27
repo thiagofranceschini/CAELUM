@@ -42,8 +42,10 @@ public class ShoppingCart implements Serializable {
 	
 	public BigDecimal getTotal() {
 		BigDecimal total = BigDecimal.ZERO;
+		System.out.println("**apresentando o size "+items.size());
 		for(ShoppingItem item : items.keySet()) {
 			total = total.add(getTotal(item));
+			
 		}
 		return total;
 	}

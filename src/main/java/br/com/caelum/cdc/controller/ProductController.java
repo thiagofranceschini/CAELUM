@@ -62,6 +62,7 @@ public class ProductController {
 	public ModelAndView list(){
 		ModelAndView modelAndView = new ModelAndView("produtos/lista");
 		modelAndView.addObject("products", productDao.listar());
+		System.out.println("****** testando o cache*****************");
 		return modelAndView;
 		
 	}
