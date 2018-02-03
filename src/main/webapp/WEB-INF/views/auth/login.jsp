@@ -8,7 +8,7 @@
 <title>LOGIN</title>
 </head>
 <body>
-	<h1>Efetuar Login</h1>
+	<h1>Efetuar Login do Thiago</h1>
 	
 	<form:form servletRelativeAction="/login">
 		<table>
@@ -21,7 +21,7 @@
 			<td><input type='password' name='password'></td>
 			</tr>
 			<tr>
-			<td>colspan='2'</td>
+			<td colspan='2'></td>
 			<td><input name='submit' type='submit' value='Logar'></td>
 			</tr>
 		</table>

@@ -28,5 +28,10 @@ public class ProductDao {
 		return manager.createQuery("select distinct(p) from Product p join fetch p.prices where p.id=:id", 
 				Product.class).setParameter("id", id).getSingleResult();
 	}
+	
+	public Integer somaLivros(){
+		List <Product>livros = manager.createQuery("select p from Product p ").getResultList();
+		return livros.size();
+	}
 
 }
